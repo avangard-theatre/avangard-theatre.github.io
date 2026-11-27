@@ -2074,7 +2074,70 @@
           border-color: #3A3A46 !important;
         }
 
-        /* ЦЕНА В РАСПИСАНИИ */
+    /* СПОКОЙНЫЙ ЧИТАЕМЫЙ ПЕРВЫЙ ЭКРАН И ЗАМЕДЛЕННАЯ БЕГУЩАЯ СТРОКА */
+        .slide-bg {
+          filter: brightness(0.38) contrast(1.04) saturate(0.72) !important;
+        }
+        body[data-design="midnight-gold"] .slide-overlay {
+          background:
+            linear-gradient(90deg, rgba(11,17,32,0.88) 0%, rgba(11,17,32,0.56) 52%, rgba(11,17,32,0.28) 100%),
+            linear-gradient(180deg, rgba(11,17,32,0.25) 0%, rgba(11,17,32,0.62) 60%, rgba(11,17,32,0.98) 100%) !important;
+        }
+        body[data-design="classic-gold"] .slide-overlay {
+          background:
+            linear-gradient(90deg, rgba(9,9,11,0.88) 0%, rgba(9,9,11,0.56) 52%, rgba(9,9,11,0.28) 100%),
+            linear-gradient(180deg, rgba(9,9,11,0.25) 0%, rgba(9,9,11,0.62) 60%, rgba(9,9,11,0.98) 100%) !important;
+        }
+        body[data-design="warm-cream"] .slide-overlay {
+          background:
+            linear-gradient(90deg, rgba(15,22,38,0.88) 0%, rgba(15,22,38,0.56) 52%, rgba(15,22,38,0.28) 100%),
+            linear-gradient(180deg, rgba(15,22,38,0.25) 0%, rgba(15,22,38,0.62) 60%, rgba(15,22,38,0.96) 100%) !important;
+        }
+        body[data-design] .carousel-slide .slide-kicker {
+          background: transparent !important;
+          border: none !important;
+          padding: 0 !important;
+          margin-bottom: 10px !important;
+          letter-spacing: 0.16em !important;
+          font-weight: 600 !important;
+          font-size: 12px !important;
+        }
+        .avant-marquee {
+          padding: 9px 0 !important;
+        }
+        .avant-marquee-track {
+          animation: marqueeScroll 68s linear infinite !important;
+          font-size: 12px !important;
+          letter-spacing: 0.16em !important;
+          opacity: 0.78;
+        }
+        .avant-marquee-track b {
+          margin: 0 14px !important;
+          opacity: 0.7;
+        }
+        @media (max-width: 980px) {
+          .slide-bg {
+            position: absolute !important;
+            inset: -18px !important;
+            width: calc(100% + 36px) !important;
+            height: calc(100% + 36px) !important;
+            filter: brightness(0.22) contrast(1.0) saturate(0.35) blur(10px) !important;
+          }
+          body[data-design="midnight-gold"] .slide-overlay {
+            background: linear-gradient(180deg, rgba(11,17,32,0.58) 0%, rgba(11,17,32,0.82) 55%, rgba(11,17,32,0.98) 100%) !important;
+          }
+          body[data-design="classic-gold"] .slide-overlay {
+            background: linear-gradient(180deg, rgba(9,9,11,0.58) 0%, rgba(9,9,11,0.82) 55%, rgba(9,9,11,0.98) 100%) !important;
+          }
+          body[data-design="warm-cream"] .slide-overlay {
+            background: linear-gradient(180deg, rgba(15,22,38,0.58) 0%, rgba(15,22,38,0.82) 55%, rgba(15,22,38,0.96) 100%) !important;
+          }
+          .avant-marquee-track {
+            animation: marqueeScroll 78s linear infinite !important;
+            font-size: 11px !important;
+          }
+        }    
+/* ЦЕНА В РАСПИСАНИИ */
         .play-price-tag {
           font-size: 13px;
           font-weight: 600;
@@ -5014,16 +5077,16 @@
 
       // 2. Обновляем бегущую строку (без Пушкинской карты и общих фраз)
       const marqueeTrack = document.querySelector('.avant-marquee-track');
-      if (marqueeTrack) {
+     if (marqueeTrack) {
         marqueeTrack.innerHTML = `
-          <span>МОЛОДЕЖНЫЙ АВАНГАРДНЫЙ ТЕАТР</span> <b>////</b>
-          <span>Театр - это не стены. Театр - это люди!</span> <b>////</b>
-          <span>БОЛЬШАЯ И МАЛАЯ СЦЕНА • ЧИТКИ В БАРЕ «ДОМАШКА»</span> <b>////</b>
-          <span>ВОЛЖСКИЙ • ЦКиИ «ОКТЯБРЬ»</span> <b>////</b>
-          <span>МОЛОДЕЖНЫЙ АВАНГАРДНЫЙ ТЕАТР</span> <b>////</b>
-          <span>Театр - это не стены. Театр - это люди!</span> <b>////</b>
-          <span>БОЛЬШАЯ И МАЛАЯ СЦЕНА • ЧИТКИ В БАРЕ «ДОМАШКА»</span> <b>////</b>
-          <span>ВОЛЖСКИЙ • ЦКиИ «ОКТЯБРЬ»</span> <b>////</b>
+          <span>МОЛОДЕЖНЫЙ АВАНГАРДНЫЙ ТЕАТР</span> <b>•</b>
+          <span>Театр — это не стены. Театр — это люди!</span> <b>•</b>
+          <span>БОЛЬШАЯ И МАЛАЯ СЦЕНА • ЧИТКИ В БАРЕ «ДОМАШКА»</span> <b>•</b>
+          <span>ВОЛЖСКИЙ • ЦКиИ «ОКТЯБРЬ»</span> <b>•</b>
+          <span>МОЛОДЕЖНЫЙ АВАНГАРДНЫЙ ТЕАТР</span> <b>•</b>
+          <span>Театр — это не стены. Театр — это люди!</span> <b>•</b>
+          <span>БОЛЬШАЯ И МАЛАЯ СЦЕНА • ЧИТКИ В БАРЕ «ДОМАШКА»</span> <b>•</b>
+          <span>ВОЛЖСКИЙ • ЦКиИ «ОКТЯБРЬ»</span> <b>•</b>
         `;
       }
 
@@ -6187,7 +6250,7 @@
       setTimeout(initScrollReveal, 50);
     }
 
-    function renderCarousel() {
+   function renderCarousel() {
       const track = document.getElementById('heroCarouselTrack');
       const dots = document.getElementById('carouselDots');
 
@@ -6216,12 +6279,24 @@
 
       track.innerHTML = featured.map((p, idx) => {
         const showtimes = getPlayShowtimes(p.id, false);
-        const datesSummary = showtimes.length
-          ? showtimes.map(s => `${s.date}${s.time ? ' • ' + s.time : ''}`).join('  |  ')
-          : p.stage;
-        const firstTicketShow = showtimes.find(s => s.ticketUrl && s.ticketUrl.trim() !== '');
+        const ticketShows = showtimes.filter(s => s.ticketUrl && s.ticketUrl.trim() !== '');
+        let kickerText = p.stage;
+        if (showtimes.length === 1) {
+          kickerText = `${showtimes[0].date}${showtimes[0].time ? ' • ' + showtimes[0].time : ''} • ${p.stage}`;
+        } else if (showtimes.length === 2) {
+          kickerText = `${showtimes[0].date} и ${showtimes[1].date} • ${p.stage}`;
+        } else if (showtimes.length >= 3) {
+          kickerText = `${showtimes[0].date} — ${showtimes[showtimes.length - 1].date} • ${p.stage}`;
+        }
         const firstPriceShow = showtimes.find(s => s.price && s.price.trim() !== '');
         const bgImg = (p.heroBg && !p.heroBg.includes('images.unsplash.com')) ? p.heroBg : (p.poster || p.heroBg);
+
+        let primaryCta = '';
+        if (ticketShows.length === 1) {
+          primaryCta = `<button class="btn-primary" onclick="openTicketModal('${ticketShows[0].ticketUrl}')">Купить билет →</button>`;
+        } else if (ticketShows.length > 1) {
+          primaryCta = `<button class="btn-primary" onclick="openPlayPage('${p.id}')">Выбрать дату и билет →</button>`;
+        }
 
         return `
         <div class="carousel-slide ${idx === currentSlide ? 'active' : ''}">
@@ -6231,8 +6306,7 @@
           <div class="slide-overlay"></div>
           <div class="slide-content">
             <div>
-              <span class="slide-kicker">Ближайший показ: ${datesSummary} • ${p.stage}</span>
-              ${p.emotionQuote ? `<span class="slide-emotion-quote">${p.emotionQuote}</span>` : ''}
+              <span class="slide-kicker">${kickerText}</span>
               <h2 class="slide-title" onclick="openPlayPage('${p.id}')" title="Подробнее о спектакле">${p.title}</h2>
               <p class="slide-desc">${p.shortDesc}</p>
               <div class="slide-meta-row">
@@ -6243,7 +6317,7 @@
               <button class="editor-only-control" onclick="openCropStudio('playHero','${p.id}')">📷 Кадрировать / Сменить фон слайда</button>
             </div>
             <div class="slide-cta-box">
-              ${firstTicketShow ? `<button class="btn-primary" onclick="openTicketModal('${firstTicketShow.ticketUrl}')">Купить билет (${firstTicketShow.date}) →</button>` : ''}
+              ${primaryCta}
               <button class="btn-outline" onclick="openPlayPage('${p.id}')">Подробнее о спектакле →</button>
             </div>
           </div>
