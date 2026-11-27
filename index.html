@@ -3,10 +3,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>МАТ — Молодежный Авангардный Театр | Волжский</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <!-- Выразительные театральные шрифты: Philosopher (авангард с изюминкой), Oranienbaum (плакатный модерн), Cormorant Garamond и чистый Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&amp;family=Inter:wght@300;400;500;600&amp;family=Oranienbaum&amp;family=Oswald:wght@400;500&amp;family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&amp;family=Syne:wght@600;700;800&amp;display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #09090B;
@@ -2486,29 +2485,7 @@
     </div>
   </div>
 
-  <!-- Юридическое окно Политики обработки персональных данных (152-ФЗ) -->
-  <div class="legal-modal-overlay" id="legalModal" onclick="if(event.target===this)this.classList.remove('active')">
-    <div class="legal-modal-box">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:14px;">
-        <h3 style="font-family:var(--font-serif);font-size:26px;">Политика в отношении обработки персональных данных (152-ФЗ)</h3>
-        <button class="ticket-modal-close" onclick="document.getElementById('legalModal').classList.remove('active')">✕</button>
-      </div>
-      <div style="font-size:14px;color:var(--text-muted);display:flex;flex-direction:column;gap:12px;" data-editable="" contenteditable="false">
-        <p><strong style="color:var(--text);">1. Общие положения:</strong> Настоящая Политика составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обеспечения информационной безопасности Молодежным Авангардным Театром (г. Волжский, эл. почта: avangard_theatre@mail.ru).</p>
-        <p><strong style="color:var(--text);">2. Отсутствие сбора анкетных данных на сайте:</strong> Сайт не осуществляет прямой сбор или хранение ФИО и телефонов посетителей. Покупка билетов производится через сертифицированную билетную систему Intickets.ru.</p>
-        <p><strong style="color:var(--text);">3. Файлы Cookie:</strong> На сайте используются технические файлы cookie исключительно для корректной работы интерфейса.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Плашка согласия Cookie (152-ФЗ) -->
-  <div class="cookie-banner" id="cookieBanner">
-    <div style="font-size:13px;color:var(--text-muted);">
-      Мы используем технические файлы cookie для удобства работы с сайтом согласно <a href="/privacy.html" style="color:var(--text-muted);text-decoration:underline;font-size:13px;margin-top:4px;">Политика обработки персональных данных (152-ФЗ)</a>
-    </div>
-    <button class="btn-primary" style="padding:10px 20px;font-size:11px;white-space:nowrap;" onclick="acceptCookies()">Хорошо</button>
-  </div>
-
+ 
   <!-- Мобильное меню -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-menu-close" onclick="toggleMobileMenu()">✕</button>
@@ -6719,20 +6696,6 @@
     function resetSlideTimer() {
       if (slideInterval) clearInterval(slideInterval);
       slideInterval = setInterval(() => { if (!editMode) showSlide(currentSlide + 1); }, 6500);
-    }
-
-    function checkCookies() {
-      try {
-        if (!localStorage.getItem('mat_cookie_accepted')) {
-          document.getElementById('cookieBanner').classList.add('show');
-        }
-      } catch(e) {
-        document.getElementById('cookieBanner').classList.add('show');
-      }
-    }
-    function acceptCookies() {
-      try { localStorage.setItem('mat_cookie_accepted', '1'); } catch(e) {}
-      document.getElementById('cookieBanner').classList.remove('show');
     }
 
     function updatePlayField(playId, field, val) {
